@@ -5394,9 +5394,9 @@
   },
   {
     "s": "Intel Processor Specification",
-    "d": "ark.intel.com",
+    "d": "www.intel.com",
     "t": "ark",
-    "u": "https://ark.intel.com/search?q={{{s}}}",
+    "u": "https://www.intel.com/content/www/us/en/search.html#cf-tabfilter=Products&q={{{s}}}",
     "c": "Tech",
     "sc": "Companies"
   },
@@ -16064,7 +16064,7 @@
     "c": "Entertainment",
     "sc": "Forum"
   },
-  {  
+  {
     "s": "Canadian Public Transit Discussion Board Wiki",
     "d": "cptdb.ca",
     "ad": "cptdb.ca/wiki/index.php/Main_Page",
@@ -18183,9 +18183,6 @@
     "s": "DuckDuckGo Community",
     "d": "duck.co",
     "t": "dc",
-    "ts": [
-      "forum"
-    ],
     "u": "https://duck.co/forum/search?q={{{s}}}",
     "c": "Online Services",
     "sc": "Search (DDG)"
@@ -32254,6 +32251,17 @@
       "ghcode"
     ],
     "u": "https://github.com/search?q={{{s}}}&type=Code",
+    "c": "Tech",
+    "sc": "Programming"
+  },
+  {
+    "s": "GitHub Pull Requests",
+    "d": "github.com",
+    "t": "ghpr",
+    "ts": [
+      "ghpull"
+    ],
+    "u": "https://github.com/search?q={{{s}}}&type=pullrequests",
     "c": "Tech",
     "sc": "Programming"
   },
@@ -79420,9 +79428,9 @@
   },
   {
     "s": "Toronto Public Library",
-    "d": "www.torontopubliclibrary.ca",
+    "d": "tpl.bibliocommons.com",
     "t": "tpl",
-    "u": "https://www.torontopubliclibrary.ca/search.jsp?Ntt={{{s}}}",
+    "u": "https://tpl.bibliocommons.com/v2/search?query={{{s}}}&searchType=smart",
     "c": "Research",
     "sc": "Local"
   },
@@ -93524,7 +93532,7 @@
     "u": "https://wiki.resonite.com/index.php?search={{{s}}}",
     "c": "Online Services"
   },
-  {  
+  {
     "s": "Orion Feedback (Discussions)",
     "d": "orionfeedback.org",
     "ad": "orionfeedback.org/d",
