@@ -1,0 +1,50 @@
+name: sync-upstream-and-build
+
+on:
+  schedule:
+    - cron: "23 4 * * *" # daily
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write # push upstream sync merges to the fork
+  packages: write # push image to GHCR
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Merge upstream changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git remote add upstream https://github.com/taciturnaxolotl/unduckified.git
+          git fetch upstream main
+          if git merge --no-edit upstream/main; then
+            git push origin main
+          else
+            echo "::error::Upstream merge conflict - resolve manually"
+            exit 1
+          fi
+
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Containerfile
+          push: true
+          tags: ghcr.io/julianrottenberg/unduckified:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
