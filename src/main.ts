@@ -171,7 +171,7 @@ const createTemplate = (data: { LS_DEFAULT_BANG: string }) => `
 				<input
 					type="text"
 					class="url-input"
-					value="https://unduck.link?q=%s"
+					value="https://s.julianrottenberg.com?q=%s"
 					readonly
 				/>
 				<button class="copy-button">
