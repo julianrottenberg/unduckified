@@ -85,24 +85,3 @@ jobs:
             git push origin main
           fi
 
-      # Handle Tangled push only if we have new changes
-      - name: Setup Tailscale
-        if: steps.check_changes.outputs.has_changes == 'true'
-        uses: tailscale/github-action@v4
-        with:
-          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
-          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
-          tags: tag:ci
-
-      - name: Configure SSH
-        if: steps.check_changes.outputs.has_changes == 'true'
-        run: |
-          mkdir -p ~/.ssh
-          echo "StrictHostKeyChecking no" >> ~/.ssh/config
-
-      - name: Push to Tangled
-        if: steps.check_changes.outputs.has_changes == 'true'
-        run: |
-          git remote add tangled git@terebithia:did:plc:krxbvxvis5skq7jj6eot23ul/unduckified || true
-          git push tangled main
-        continue-on-error: true
