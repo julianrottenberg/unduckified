@@ -4,6 +4,15 @@ on:
     - cron: "0 0 * * *"
   workflow_dispatch:
 
+# Without this the default GITHUB_TOKEN is read-only on contents, so the commit
+# this job builds locally can never be pushed:
+#   remote: Permission to julianrottenberg/unduckified.git denied to github-actions[bot].
+#   fatal: unable to access '...': The requested URL returned error: 403
+# (build-image.yml has always declared `contents: write`, which is why only this
+# workflow ever failed.)
+permissions:
+  contents: write
+
 jobs:
   fetch-bangs:
     runs-on: ubuntu-latest
